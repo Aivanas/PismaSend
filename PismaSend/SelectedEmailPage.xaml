@@ -1,0 +1,64 @@
+﻿<Page x:Class="PismaSend.SelectedEmailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PismaSend"
+      mc:Ignorable="d" 
+      FontFamily="Tektur"
+      d:DesignHeight="450" d:DesignWidth="800"
+      
+      Title="SelectedEmailPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3.5*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                Тема письма: 
+            </TextBlock>
+            <TextBlock Margin="5" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                Отправитель: 
+            </TextBlock>
+            <TextBlock Margin="5" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                Получатель: 
+            </TextBlock>
+            <!--_________________________________________________________-->
+            <TextBlock x:Name="EmailThemeTb" Margin="5" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            </TextBlock>
+            <TextBlock x:Name="EmailSenderTb" Margin="5" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            </TextBlock>
+            <TextBlock x:Name="EmailReciverTb" Margin="5" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            </TextBlock>
+        </Grid>
+
+        <RichTextBox IsReadOnly="True" x:Name="EmailBodyRTB" Grid.Row="1">
+            
+        </RichTextBox>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BackButton" Content="Назад" Click="BackButton_Click" />
+            <Button x:Name="ReplyButton" Content="Ответить" Grid.Column="1" />
+
+
+        </Grid>
+        
+    </Grid>
+</Page>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="PismaSend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PismaSend"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        FontFamily="Tektur"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="MainWindow" Height="450" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+
+        <Image Margin="20" x:Name="LogoImage" Grid.Row="0" 
+               Source="/pochta.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/pochta.png"/>
+            </Image.OpacityMask>
+        </Image>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="aivanasananas@yandex.ru"
+                x:Name="EmailTbx"
+     Margin="5"
+     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+     VerticalAlignment="Top"
+     AcceptsReturn="True"
+     TextWrapping="Wrap"
+     VerticalScrollBarVisibility="Auto"
+     materialDesign:HintAssist.Hint="Сюда вводится почта"
+     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"/>
+            <ComboBox
+                Margin="5"
+                Grid.Column="1"
+                VerticalAlignment="Top"
+    x:Name="ServiceComboBox"
+    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+    IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
+    materialDesign:HintAssist.Hint="Клиент"
+    ItemsSource="{Binding ShortStringList}" >
+                <ComboBoxItem Content="Google" Tag="imap.gmail.com"/>
+                <ComboBoxItem Content="Mail" Tag="imap.mail.ru"/>
+                <ComboBoxItem IsSelected="True" Content="Yandex" Tag="imap.yandex.ru"/>
+                <ComboBoxItem  Content="Rambler" Tag="imap.rambler.ru"/>
+
+
+            </ComboBox>
+        </Grid>
+        
+       
+        <PasswordBox
+            Password="elltrtavoeiqxipn"
+            x:Name="PsswrdBx"
+            Margin="5" VerticalAlignment="Top"
+            Grid.Row="2"
+            Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+            materialDesign:HintAssist.Hint="Сюда вводится пароль" />
+
+
+        <Button Margin="5" 
+                Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
+                Grid.Row="3" Content="Войти" Click="Button_Click" />
+
+
+    </Grid>
+</Window>
