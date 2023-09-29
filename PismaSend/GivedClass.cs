@@ -26,6 +26,8 @@ namespace PismaSend
         public static void Initialize(string host)
         {
             client = new ImapClient(host, true);
+            client.IsDebug = true;
+
             if (!client.Connect())
             {
                 throw new Exception("Error connecting to the client");

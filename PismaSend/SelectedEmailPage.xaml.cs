@@ -26,9 +26,12 @@ namespace PismaSend
         {
             InitializeComponent();
             _window = window;
-            EmailThemeTb.Text = message.Subject;
-            EmailSenderTb.Text = message.From.ToString();
-            EmailReciverTb.Text = message.To[0].ToString();
+            if( message != null ) {
+                EmailThemeTb.Text = message.Subject;
+                EmailSenderTb.Text = message.From.ToString();
+                EmailReciverTb.Text = message.To[0].ToString();
+            }
+            
 
            
 
@@ -41,27 +44,34 @@ namespace PismaSend
             //webBrowser.NavigateToString(htmlContent);
 
           //  EmailBodyRTB.Document = message.Body.Html;
-          if (message.Body == null)
-    
-               MessageBox.Show("ыуыуыу");
-         
-
+          
+          
                 try {
-                    MessageBox.Show(message.Body.ToString());
+                MessageBox.Show(message.BodyParts.Length.ToString());
+                //MessageBox.Show(message.Body.Text.ToString());
+                if (message.Body == null)
+                { MessageBox.Show("ыуыуыу"); }
+
+                else if (message.Body.Text == "")
+                {
+                    MessageBox.Show("анаконда");
                 }
-            catch (Exception ex) {
-            MessageBox.Show(ex.Message);    
+                }
+                catch (Exception ex) {
+                    //MessageBox.Show(ex.ToString());
+                
+                }
+
+            
+            
+
+
+
+                //EmailBodyRTB.Document = message.Body;
+
+
+
             }
-            
-            
-
-
-
-            //EmailBodyRTB.Document = message.Body;
-
-
-
-        }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

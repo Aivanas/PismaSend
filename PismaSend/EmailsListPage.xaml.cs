@@ -36,15 +36,14 @@ namespace PismaSend
 
             Folder folder = _window.folders[menuNum];
             //folder.Messages.Download();
-            
+            _window.ProgressBarName.Visibility = Visibility.Visible;
+            EmailsListBox.Items.Clear();
 
             Task.Run(() => 
            {
                 MessageCollection messages = ImapHelper.GetMessagesForFolder(folder.Name);
                Dispatcher.Invoke(() =>
-               {
-                   EmailsListBox.Items.Clear();
-                   _window.ProgressBarName.Visibility = Visibility.Visible;
+               {             
                    foreach (var item in messages)
                    {
                        EmailsListBox.Items.Add(item);                      
