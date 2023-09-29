@@ -28,24 +28,24 @@
 
             <TextBlock x:Name="MyEmailName" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-            <Button Margin="5" 
+            <Button Margin="5" x:Name="InEmailsButton"
         Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-        Grid.Row="1" Content="Входящие" />
-            <Button Margin="5" 
+        Grid.Row="1" Content="Входящие" Click="InEmailsButton_Click" />
+            <Button Margin="5" x:Name="OutEmailsButton"
         Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-        Grid.Row="2" Content="Исходящие"/>
-            <Button Margin="5" 
+        Grid.Row="2" Content="Исходящие" Click="OutEmailsButton_Click"/>
+            <Button Margin="5" x:Name="SpamEmailsButton"
         Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-        Grid.Row="3" Content="Спам"/>
-            <Button Margin="5" 
+        Grid.Row="3" Content="Спам" Click="SpamEmailsButton_Click"/>
+            <Button Margin="5" x:Name="DraftEmailsButton"
         Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-        Grid.Row="4" Content="Черновики"/>
-            <Button Margin="5" 
+        Grid.Row="4" Content="Черновики" Click="DraftEmailsButton_Click"/>
+            <Button Margin="5" x:Name="TrashEmailsButton"
         Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-        Grid.Row="5" Content="Корзина"/>
-            <Button Margin="5" 
+        Grid.Row="5" Content="Корзина" Click="TrashEmailsButton_Click"/>
+            <Button Margin="5" x:Name="NewEmailButton"
             Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
-            Grid.Row="7" Content="Написать"/>
+            Grid.Row="7" Content="Написать" />
         </Grid>
         
         <ProgressBar

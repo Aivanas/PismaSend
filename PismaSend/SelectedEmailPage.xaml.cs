@@ -30,7 +30,9 @@ namespace PismaSend
             EmailSenderTb.Text = message.From.ToString();
             EmailReciverTb.Text = message.To[0].ToString();
 
-            MessageBox.Show(message.Body.ToString());
+           
+
+            //MessageBox.Show(message.Body.ToString());
 
            // string htmlContent = message.Body.Html; // предположим, что текст в формате HTML
 
@@ -38,12 +40,25 @@ namespace PismaSend
             //WebBrowser webBrowser = new WebBrowser();
             //webBrowser.NavigateToString(htmlContent);
 
- //           EmailBodyRTB.Document.Blocks.Add(new BlockUIContainer(webBrowser));
+          //  EmailBodyRTB.Document = message.Body.Html;
+          if (message.Body == null)
+    
+               MessageBox.Show("ыуыуыу");
+         
+
+                try {
+                    MessageBox.Show(message.Body.ToString());
+                }
+            catch (Exception ex) {
+            MessageBox.Show(ex.Message);    
+            }
+            
+            
 
 
 
             //EmailBodyRTB.Document = message.Body;
-            
+
 
 
         }

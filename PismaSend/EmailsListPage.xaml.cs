@@ -23,22 +23,28 @@ namespace PismaSend
     public partial class EmailsListPage : Page
     {
         private PismaWindow _window;
-        private CommonFolderCollection folders = ImapHelper.GetFolders();
         public EmailsListPage(PismaWindow window)
         {
             InitializeComponent();
             _window = window;          
-            UpdateEmailsList(window.folders[1].Name);
+            UpdateEmailsList(1);
             //window.ProgressBarName.Visibility = Visibility.Hidden;
         }
 
-        public void UpdateEmailsList(string folder)
+        public void UpdateEmailsList(int menuNum)
         {
+
+            Folder folder = _window.folders[menuNum];
+            //folder.Messages.Download();
+            
+
             Task.Run(() => 
            {
-                MessageCollection messages = ImapHelper.GetMessagesForFolder(folder);
+                MessageCollection messages = ImapHelper.GetMessagesForFolder(folder.Name);
                Dispatcher.Invoke(() =>
                {
+                   EmailsListBox.Items.Clear();
+                   _window.ProgressBarName.Visibility = Visibility.Visible;
                    foreach (var item in messages)
                    {
                        EmailsListBox.Items.Add(item);                      
@@ -51,7 +57,7 @@ namespace PismaSend
 
         private void EmailsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _window.PagesFrame.Content = new SelectedEmailPage((ImapX.Message)EmailsListBox.SelectedItem);
+            _window.PagesFrame.Content = new SelectedEmailPage((ImapX.Message)EmailsListBox.SelectedItem, _window);
         }
     }
 }
